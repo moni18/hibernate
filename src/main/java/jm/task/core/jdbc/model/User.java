@@ -1,17 +1,18 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Table
+
+
+@Entity
+@Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue
+    //@GeneratedValue(generator = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "firstName")
     private String name;
 
     @Column
@@ -42,8 +43,8 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name_) {
+        this.name = name_;
     }
 
     public String getLastName() {
